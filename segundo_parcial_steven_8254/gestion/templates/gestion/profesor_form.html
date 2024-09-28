@@ -1,8 +1,13 @@
 
-<!--PARA CREAR Y MODIFICAR-->
-<h2>{% if object %}Editar{% else %}Agregar{% endif %} Profesor</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Guardar</button>
+<!-- profesor_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Profesor</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
 </form>
+<a href="{% url 'profesor-list' %}">Cancelar</a>
+{% endblock %}

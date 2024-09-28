@@ -1,13 +1,25 @@
+<!-- profesor_list.html -->
+{% extends 'base.html' %}
 
-<!--PARA LISTAR-->
-
-<h2>Listado de Profesores</h2>
-<ul>
-  {% for profesor in object_list %}
-    <li>{{ profesor.nombre }} {{ profesor.apellido }} -
-        <a href="{% url 'profesor_update' profesor.cedula %}">Editar</a> |
-        <a href="{% url 'profesor_delete' profesor.cedula %}">Eliminar</a>
-    </li>
-  {% endfor %}
-</ul>
-<a href="{% url 'profesor_create' %}">Agregar Profesor</a>
+{% block content %}
+<h1>Lista de Profesores</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Acciones</th>
+    </tr>
+    {% for profesor in object_list %}
+    <tr>
+        <td>{{ profesor.nombre }}</td>
+        <td>{{ profesor.apellido }}</td>
+        <td>
+            <a href="{% url 'profesor-detail' profesor.pk %}">Ver</a>
+            <a href="{% url 'profesor-detail' profesor.pk %}">Editar</a>
+            <a href="{% url 'profesor-detail' profesor.pk %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'profesor-list-create' %}">Agregar Profesor</a>
+{% endblock %}

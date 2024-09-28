@@ -1,10 +1,12 @@
-<!--Para confirmar eliminacion de una mascota-->
+<!-- mascota_confirm_delete.html -->
+{% extends 'base.html' %}
 
-<h2>Eliminar Mascota</h2>
-<p>¿Estás seguro de que deseas eliminar la mascota "{{ object.nombre }}"?</p>
-<form method="post">
+{% block content %}
+<h1>Confirmar Eliminación</h1>
+<p>¿Estás seguro de que deseas eliminar a {{ mascota.nombre }}?</p>
+<form method="POST">
     {% csrf_token %}
-    <button type="submit">Eliminar</button>
+    <button type="submit">Confirmar Eliminación</button>
 </form>
-<a href="{% url 'mascota_list' %}">Cancelar</a>
-
+<a href="{% url 'mascota-list' %}">Cancelar</a>
+{% endblock %}

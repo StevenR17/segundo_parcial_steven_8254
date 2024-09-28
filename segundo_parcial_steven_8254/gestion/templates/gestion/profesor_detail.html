@@ -1,0 +1,12 @@
+<!-- profesor_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Detalles del Profesor</h1>
+<p>Nombre: {{ profesor.nombre }}</p>
+<p>Apellido: {{ profesor.apellido }}</p>
+
+<a href="{% url 'profesor-edit' profesor.pk %}">Editar</a>
+<a href="{% url 'profesor-delete' profesor.pk %}">Eliminar</a>
+<a href="{% url 'profesor-list' %}">Volver a la lista</a>
+{% endblock %}

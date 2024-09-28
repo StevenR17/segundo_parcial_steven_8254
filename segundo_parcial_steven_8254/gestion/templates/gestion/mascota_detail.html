@@ -1,0 +1,14 @@
+<!-- mascota_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Detalles de la Mascota</h1>
+<p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
+<p><strong>Raza:</strong> {{ mascota.raza }}</p>
+<p><strong>Género:</strong> {{ mascota.genero }}</p>
+<p><strong>Cédula del Propietario:</strong> {{ mascota.cedula }}</p>
+
+<a href="{% url 'mascota-edit' mascota.pk %}">Editar</a> | 
+<a href="{% url 'mascota-confirm-delete' mascota.pk %}">Eliminar</a> | 
+<a href="{% url 'mascota-list' %}">Volver a la lista</a>
+{% endblock %}

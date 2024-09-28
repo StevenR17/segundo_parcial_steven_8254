@@ -1,15 +1,25 @@
-<!--PARA LISTAR MASCOTAS-->
+<!-- mascota_list.html -->
+{% extends 'base.html' %}
 
-<h2>Lista de Mascotas</h2>
-<a href="{% url 'mascota_create' %}">Agregar Nueva Mascota</a>
-<ul>
-    {% for mascota in mascotas %}
-        <li>
-            {{ mascota.nombre }} - {{ mascota.raza }} - {{ mascota.genero }} - {{ mascota.cedula.nombre }}
-            <a href="{% url 'mascota_update' mascota.pk %}">Editar</a>
-            <a href="{% url 'mascota_delete' mascota.pk %}">Eliminar</a>
-        </li>
-    {% empty %}
-        <li>No hay mascotas registradas.</li>
+{% block content %}
+<h1>Lista de Mascotas</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Raza</th>
+        <th>Acciones</th>
+    </tr>
+    {% for mascota in object_list %}
+    <tr>
+        <td>{{ mascota.nombre }}</td>
+        <td>{{ mascota.raza }}</td>
+        <td>
+            <a href="{% url 'mascota-detail' mascota.pk %}">Ver</a>
+            <a href="{% url 'mascota-detail' mascota.pk %}">Editar</a>
+            <a href="{% url 'mascota-detail' mascota.pk %}">Eliminar</a>
+        </td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
+<a href="{% url 'mascota-list-create' %}">Agregar Mascota</a>
+{% endblock %}
