@@ -1,0 +1,10 @@
+<!--Para confirmar eliminacion de una mascota-->
+
+<h2>Eliminar Mascota</h2>
+<p>¿Estás seguro de que deseas eliminar la mascota "{{ object.nombre }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
+<a href="{% url 'mascota_list' %}">Cancelar</a>
+

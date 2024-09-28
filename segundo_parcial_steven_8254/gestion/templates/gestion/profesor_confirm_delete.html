@@ -1,0 +1,8 @@
+<!--PARA ELIMINAR-->
+
+<h2>Eliminar Profesor</h2>
+<p>¿Estás seguro que deseas eliminar a {{ object.nombre }} {{ object.apellido }}?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Eliminar</button>
+</form>

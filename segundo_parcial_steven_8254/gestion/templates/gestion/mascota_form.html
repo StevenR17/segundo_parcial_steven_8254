@@ -1,0 +1,9 @@
+<!--PARA CREAR O EDITAR MASCOTAS-->
+
+<h2>{% if object %}Editar Mascota{% else %}Crear Nueva Mascota{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'mascota_list' %}">Volver a la lista de mascotas</a>

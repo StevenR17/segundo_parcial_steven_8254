@@ -1,0 +1,15 @@
+<!--PARA LISTAR MASCOTAS-->
+
+<h2>Lista de Mascotas</h2>
+<a href="{% url 'mascota_create' %}">Agregar Nueva Mascota</a>
+<ul>
+    {% for mascota in mascotas %}
+        <li>
+            {{ mascota.nombre }} - {{ mascota.raza }} - {{ mascota.genero }} - {{ mascota.cedula.nombre }}
+            <a href="{% url 'mascota_update' mascota.pk %}">Editar</a>
+            <a href="{% url 'mascota_delete' mascota.pk %}">Eliminar</a>
+        </li>
+    {% empty %}
+        <li>No hay mascotas registradas.</li>
+    {% endfor %}
+</ul>
