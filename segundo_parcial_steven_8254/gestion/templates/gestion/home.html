@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Bienvenido al Sistema</h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'mascota-list-create' %}">MASCOTAS</a></li>
-            <li><a href="{% url 'profesor-list-create' %}">PROFESORES</a></li>
-        </ul>
-    </nav>
-</body>
-</html>
+<!-- home.html -->
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+
+
+
+<script>
+    fetch('/profesores/')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById('profesor-list');
+            data.forEach(profesor => {
+                const li = document.createElement('li');
+                li.textContent = `${profesor.nombre} ${profesor.apellido}`;
+                list.appendChild(li);
+            });
+        });
+
+    fetch('/mascotas/')
+        .then(response => response.json())
+        .then(data => {
+            const list = document.getElementById('mascota-list');
+            data.forEach(mascota => {
+                const li = document.createElement('li');
+                li.textContent = `${mascota.nombre}`;
+                list.appendChild(li);
+            });
+        });
+</script>
+{% endblock %}

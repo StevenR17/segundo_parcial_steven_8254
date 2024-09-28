@@ -17,7 +17,7 @@ from .views import (
 urlpatterns = [
     path('home/', home, name='home'),
 
-     # URLs para la API de profesores
+    # URLs para la API de profesores
     path('profesores/', ProfesorListCreate.as_view(), name='profesor-list-create'),  # Listar y crear (API)
     path('profesores/<int:pk>/', ProfesorRetrieveUpdateDestroy.as_view(), name='profesor-detail'),  # Ver, editar, eliminar (API)
 
@@ -29,14 +29,11 @@ urlpatterns = [
     path('profesores/listar/', profesor_list, name='profesor-list'),  # Listar profesores (HTML)
     path('mascotas/listar/', mascota_list, name='mascota-list'),  # Listar mascotas (HTML)
 
-    
     # URLs para ver, editar y eliminar profesores
-    path('profesores/<int:pk>/', profesor_detail, name='profesor-detail'),  # Ver profesor
     path('profesores/<int:pk>/editar/', profesor_edit, name='profesor-edit'),  # Editar profesor
     path('profesores/<int:pk>/eliminar/', profesor_delete, name='profesor-delete'),  # Eliminar profesor
 
     # URLs para ver, editar y eliminar mascotas
-    path('mascotas/<int:pk>/', mascota_detail, name='mascota-detail'),  # Ver mascota
     path('mascotas/<int:pk>/editar/', mascota_edit, name='mascota-edit'),  # Editar mascota
     path('mascotas/<int:pk>/eliminar/', mascota_delete, name='mascota-delete'),  # Eliminar mascota
 ]
